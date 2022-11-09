@@ -8,6 +8,24 @@ using System.Threading.Tasks;
 
 namespace FantasyPlayoffs
 {
+    enum TeamName
+    {
+        TeamTebowTearsHeavenEleven,
+        DillonPanthers,
+        CriticalChaseTheory,
+        ItIsMeSickos,
+        AFuckingTeamName,
+        Bryan,
+        LightsKamaraAction,
+        WeAmHerschel,
+        PeakedLastSeason,
+        AllBarkleyNoBite,
+        RunCMC,
+        Fumbledore,
+        TheKGarDynasty,
+        TheReplacements
+    }
+
     class Program
     {
         static void Main(string[] args)
@@ -15,28 +33,21 @@ namespace FantasyPlayoffs
             var teams = new Team[] {
                 new Team(6),
                 new Team(5),
+                new Team(6),
+                new Team(4),
                 new Team(5),
                 new Team(4),
+                new Team(5),
+                new Team(5),
+                new Team(5),
                 new Team(4),
-                new Team(4),
-                new Team(4),
-                new Team(4),
-                new Team(4),
-                new Team(4),
-                new Team(4),
+                new Team(5),
                 new Team(3),
                 new Team(3),
-                new Team(2)
+                new Team(3)
             };
             var remainingGames = new Game[]
             {
-                new Game(teams[(int)TeamName.TeamTebowTearsHeavenEleven], teams[(int)TeamName.RunCMC]),
-                new Game(teams[(int)TeamName.Fumbledore], teams[(int)TeamName.AFuckingTeamName]),
-                new Game(teams[(int)TeamName.WeAmHerschel], teams[(int)TeamName.AllBarkleyNoBite]),
-                new Game(teams[(int)TeamName.CriticalChaseTheory], teams[(int)TeamName.Bryan]),
-                new Game(teams[(int)TeamName.LightsKamaraAction], teams[(int)TeamName.ItIsMeSickos]),
-                new Game(teams[(int)TeamName.DillonPanthers], teams[(int)TeamName.TheReplacements]),
-                new Game(teams[(int)TeamName.PeakedLastSeason], teams[(int)TeamName.TheKGarDynasty]),
                 new Game(teams[(int)TeamName.TeamTebowTearsHeavenEleven], teams[(int)TeamName.AllBarkleyNoBite]),
                 new Game(teams[(int)TeamName.Fumbledore], teams[(int)TeamName.CriticalChaseTheory]),
                 new Game(teams[(int)TeamName.AFuckingTeamName], teams[(int)TeamName.TheKGarDynasty]),
@@ -86,21 +97,35 @@ namespace FantasyPlayoffs
                 else
                 {
                     var teamsOrderedWorstToBest = teams.OrderBy(team => team.wins);
-                    var winThreshold = teamsOrderedWorstToBest.ElementAt(8).wins;
-                    var arePlayoffsClear = teamsOrderedWorstToBest.ElementAt(7).wins != winThreshold;
+                    var playoffWinThreshold = teamsOrderedWorstToBest.ElementAt(8).wins;
+                    var arePlayoffsClear = teamsOrderedWorstToBest.ElementAt(7).wins != playoffWinThreshold;
+                    var playoffByeWinThreshold = teamsOrderedWorstToBest.ElementAt(12).wins;
+                    var arePlayoffByesClear = teamsOrderedWorstToBest.ElementAt(11).wins != playoffWinThreshold;
                     foreach (var team in teams)
                     {
-                        if (!arePlayoffsClear && team.wins == winThreshold)
+                        if (!arePlayoffsClear && team.wins == playoffWinThreshold)
                         {
                             team.playoffsMaybeMadeBasedOnPoints++;
                         }
-                        else if (team.wins >= winThreshold)
+                        else if (team.wins >= playoffWinThreshold)
                         {
                             team.playoffsDefinitelyMade++;
                         }
                         else
                         {
                             team.playoffsDefinitelyNotMade++;
+                        }
+                        if (!arePlayoffByesClear && team.wins == playoffByeWinThreshold)
+                        {
+                            team.playoffsByeMaybeMadeBasedOnPoints++;
+                        }
+                        else if (team.wins >= playoffByeWinThreshold)
+                        {
+                            team.playoffsByeDefinitelyMade++;
+                        }
+                        else
+                        {
+                            team.playoffsByeDefinitelyNotMade++;
                         }
                     }
                     scenarios++;
@@ -113,7 +138,7 @@ namespace FantasyPlayoffs
 
             for (var i = 0; i < teams.Length; i++)
             {
-                fileText += "\n" + (TeamName)i + " Playoffs definitely made: " + teams[i].playoffsDefinitelyMade + " Playoffs maybe made based on points: " + teams[i].playoffsMaybeMadeBasedOnPoints + " Playoffs definitely not made: " + teams[i].playoffsDefinitelyNotMade;
+                fileText += "\n" + (TeamName)i + " Playoffs definitely made: " + teams[i].playoffsDefinitelyMade + " Playoffs maybe made based on points: " + teams[i].playoffsMaybeMadeBasedOnPoints + " Playoffs definitely not made: " + teams[i].playoffsDefinitelyNotMade + " Playoffs bye definitely made: " + teams[i].playoffsByeDefinitelyMade + " Playoffs bye maybe made based on points: " + teams[i].playoffsByeMaybeMadeBasedOnPoints + " Playoffs bye definitely not made: " + teams[i].playoffsByeDefinitelyNotMade;
             }
 
             File.WriteAllText("obama.txt", fileText);
@@ -126,6 +151,9 @@ namespace FantasyPlayoffs
         internal long playoffsDefinitelyMade = 0;
         internal long playoffsMaybeMadeBasedOnPoints = 0;
         internal long playoffsDefinitelyNotMade = 0;
+        internal long playoffsByeDefinitelyMade = 0;
+        internal long playoffsByeMaybeMadeBasedOnPoints = 0;
+        internal long playoffsByeDefinitelyNotMade = 0;
 
         public Team(int currentWins)
         {
@@ -143,23 +171,5 @@ namespace FantasyPlayoffs
             this.team1 = team1;
             this.team2 = team2;
         }
-    }
-
-    enum TeamName
-    {
-        TeamTebowTearsHeavenEleven,
-        DillonPanthers,
-        CriticalChaseTheory,
-        ItIsMeSickos,
-        AFuckingTeamName,
-        Bryan,
-        LightsKamaraAction,
-        WeAmHerschel,
-        PeakedLastSeason,
-        AllBarkleyNoBite,
-        RunCMC,
-        Fumbledore,
-        TheKGarDynasty,
-        TheReplacements
     }
 }
