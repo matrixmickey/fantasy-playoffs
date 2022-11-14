@@ -100,7 +100,7 @@ namespace FantasyPlayoffs
                     var playoffWinThreshold = teamsOrderedWorstToBest.ElementAt(8).wins;
                     var arePlayoffsClear = teamsOrderedWorstToBest.ElementAt(7).wins != playoffWinThreshold;
                     var playoffByeWinThreshold = teamsOrderedWorstToBest.ElementAt(12).wins;
-                    var arePlayoffByesClear = teamsOrderedWorstToBest.ElementAt(11).wins != playoffWinThreshold;
+                    var arePlayoffByesClear = teamsOrderedWorstToBest.ElementAt(11).wins != playoffByeWinThreshold;
                     foreach (var team in teams)
                     {
                         if (!arePlayoffsClear && team.wins == playoffWinThreshold)
