@@ -31,10 +31,10 @@ namespace FantasyPlayoffs
         static void Main(string[] args)
         {
             var teams = new Team[] {
-                new Team(6),
+                new Team(7),
                 new Team(5),
-                new Team(6),
-                new Team(4),
+                new Team(7),
+                new Team(5),
                 new Team(5),
                 new Team(4),
                 new Team(5),
@@ -44,17 +44,13 @@ namespace FantasyPlayoffs
                 new Team(5),
                 new Team(3),
                 new Team(3),
-                new Team(3)
+                new Team(4)
             };
             var remainingGames = new Game[]
             {
-                new Game(teams[(int)TeamName.TeamTebowTearsHeavenEleven], teams[(int)TeamName.AllBarkleyNoBite]),
-                new Game(teams[(int)TeamName.Fumbledore], teams[(int)TeamName.CriticalChaseTheory]),
                 new Game(teams[(int)TeamName.AFuckingTeamName], teams[(int)TeamName.TheKGarDynasty]),
-                new Game(teams[(int)TeamName.WeAmHerschel], teams[(int)TeamName.TheReplacements]),
                 new Game(teams[(int)TeamName.LightsKamaraAction], teams[(int)TeamName.RunCMC]),
                 new Game(teams[(int)TeamName.DillonPanthers], teams[(int)TeamName.Bryan]),
-                new Game(teams[(int)TeamName.ItIsMeSickos], teams[(int)TeamName.PeakedLastSeason]),
                 new Game(teams[(int)TeamName.TeamTebowTearsHeavenEleven], teams[(int)TeamName.TheReplacements]),
                 new Game(teams[(int)TeamName.Fumbledore], teams[(int)TeamName.DillonPanthers]),
                 new Game(teams[(int)TeamName.AFuckingTeamName], teams[(int)TeamName.PeakedLastSeason]),
