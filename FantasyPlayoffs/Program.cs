@@ -76,7 +76,7 @@ namespace FantasyPlayoffs
 
             long scenarios = 0;
 
-            new Timer((e) => { Console.WriteLine(scenarios); }, null, TimeSpan.FromMinutes(0), TimeSpan.FromMinutes(1));
+            new Timer((e) => { Console.WriteLine(scenarios); }, null, TimeSpan.FromMinutes(0), TimeSpan.FromSeconds(1));
 
             void playGames(int index)
             {
