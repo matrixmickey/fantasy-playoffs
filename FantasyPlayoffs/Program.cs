@@ -127,14 +127,21 @@ namespace FantasyPlayoffs
 
             playGames(0);
 
-            var fileText = "Total scenarios: " + scenarios;
+            var fileText = $"{scenarios},In Playoffs,Maybe In Playoffs With Points,Not In Playoffs,,{scenarios},Week 14 Bye,Maybe Week 14 Bye With Points,No Week 14 Bye";
 
             for (var i = 0; i < teams.Length; i++)
             {
-                fileText += "\n" + (TeamName)i + " Playoffs definitely made: " + teams[i].playoffsDefinitelyMade + " Playoffs maybe made based on points: " + teams[i].playoffsMaybeMadeBasedOnPoints + " Playoffs definitely not made: " + teams[i].playoffsDefinitelyNotMade + " Playoffs bye definitely made: " + teams[i].playoffsByeDefinitelyMade + " Playoffs bye maybe made based on points: " + teams[i].playoffsByeMaybeMadeBasedOnPoints + " Playoffs bye definitely not made: " + teams[i].playoffsByeDefinitelyNotMade;
+                fileText += $"\n{(TeamName)i},{teams[i].playoffsDefinitelyMade},{teams[i].playoffsMaybeMadeBasedOnPoints},{teams[i].playoffsDefinitelyNotMade},,{(TeamName)i},{teams[i].playoffsByeDefinitelyMade},{teams[i].playoffsByeMaybeMadeBasedOnPoints},{teams[i].playoffsByeDefinitelyNotMade}";
             }
 
-            File.WriteAllText("obama.txt", fileText);
+            fileText += $"\n\n100,In Playoffs,Maybe In Playoffs With Points,Not In Playoffs,,100,Week 14 Bye,Maybe Week 14 Bye With Points,No Week 14 Bye";
+
+            for (var i = 0; i < teams.Length; i++)
+            {
+                fileText += $"\n{(TeamName)i},{String.Format("{0:0.00}", (double)teams[i].playoffsDefinitelyMade/scenarios*100)},{String.Format("{0:0.00}", (double)teams[i].playoffsMaybeMadeBasedOnPoints/scenarios*100)},{String.Format("{0:0.00}", (double)teams[i].playoffsDefinitelyNotMade/scenarios*100)},,{(TeamName)i},{String.Format("{0:0.00}", (double)teams[i].playoffsByeDefinitelyMade/scenarios*100)},{String.Format("{0:0.00}", (double)teams[i].playoffsByeMaybeMadeBasedOnPoints/scenarios*100)},{String.Format("{0:0.00}", (double)teams[i].playoffsByeDefinitelyNotMade/scenarios*100)}";
+            }
+
+            File.WriteAllText("obama.csv", fileText);
         }
     }
 
