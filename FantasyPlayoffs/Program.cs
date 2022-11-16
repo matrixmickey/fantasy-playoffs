@@ -31,20 +31,20 @@ namespace FantasyPlayoffs
         static void Main(string[] args)
         {
             var teams = new Team[] {
-                new Team(7),
-                new Team(5),
-                new Team(7),
-                new Team(5),
-                new Team(6),
-                new Team(5),
-                new Team(5),
-                new Team(5),
-                new Team(5),
-                new Team(4),
-                new Team(6),
-                new Team(3),
-                new Team(3),
-                new Team(4)
+                new Team(7), // TeamTebowTearsHeavenEleven
+                new Team(5), // DillonPanthers
+                new Team(7), // CriticalChaseTheory
+                new Team(5), // ItIsMeSickos
+                new Team(6), // AFuckingTeamName
+                new Team(5), // Bryan
+                new Team(5), // LightsKamaraAction
+                new Team(5), // WeAmHerschel
+                new Team(5), // PeakedLastSeason
+                new Team(4), // AllBarkleyNoBite
+                new Team(6), // RunCMC
+                new Team(3), // Fumbledore
+                new Team(3), // TheKGarDynasty
+                new Team(4)  // TheReplacements
             };
             var remainingGames = new Game[]
             {
