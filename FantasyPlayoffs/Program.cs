@@ -31,30 +31,23 @@ namespace FantasyPlayoffs
         static void Main(string[] args)
         {
             var teams = new Team[] {
-                new Team(7), // TeamTebowTearsHeavenEleven
-                new Team(5), // DillonPanthers
+                new Team(8), // TeamTebowTearsHeavenEleven
+                new Team(6), // DillonPanthers
                 new Team(7), // CriticalChaseTheory
                 new Team(5), // ItIsMeSickos
-                new Team(6), // AFuckingTeamName
+                new Team(7), // AFuckingTeamName
                 new Team(5), // Bryan
                 new Team(5), // LightsKamaraAction
-                new Team(5), // WeAmHerschel
+                new Team(6), // WeAmHerschel
                 new Team(5), // PeakedLastSeason
-                new Team(4), // AllBarkleyNoBite
-                new Team(6), // RunCMC
+                new Team(5), // AllBarkleyNoBite
+                new Team(7), // RunCMC
                 new Team(3), // Fumbledore
-                new Team(3), // TheKGarDynasty
+                new Team(4), // TheKGarDynasty
                 new Team(4)  // TheReplacements
             };
             var remainingGames = new Game[]
             {
-                new Game(teams[(int)TeamName.TeamTebowTearsHeavenEleven], teams[(int)TeamName.TheReplacements]),
-                new Game(teams[(int)TeamName.Fumbledore], teams[(int)TeamName.DillonPanthers]),
-                new Game(teams[(int)TeamName.AFuckingTeamName], teams[(int)TeamName.PeakedLastSeason]),
-                new Game(teams[(int)TeamName.WeAmHerschel], teams[(int)TeamName.Bryan]),
-                new Game(teams[(int)TeamName.CriticalChaseTheory], teams[(int)TeamName.TheKGarDynasty]),
-                new Game(teams[(int)TeamName.LightsKamaraAction], teams[(int)TeamName.AllBarkleyNoBite]),
-                new Game(teams[(int)TeamName.ItIsMeSickos], teams[(int)TeamName.RunCMC]),
                 new Game(teams[(int)TeamName.TeamTebowTearsHeavenEleven], teams[(int)TeamName.Bryan]),
                 new Game(teams[(int)TeamName.Fumbledore], teams[(int)TeamName.WeAmHerschel]),
                 new Game(teams[(int)TeamName.AFuckingTeamName], teams[(int)TeamName.CriticalChaseTheory]),
